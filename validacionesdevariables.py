@@ -61,7 +61,7 @@ def valcomplex(*args):
   
    
 def valList(*args):
-    if len(args[0]) == 1:
+    if len(args) == 1:
         if type(args[0])==list:
             return True
         else:
