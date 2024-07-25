@@ -66,26 +66,21 @@ def valList(*args):
             return True
         else:
             return False
-    elif len(args)==3:
-        if  (len(args[1])==list and type(args[2])=='values') or (len(args[1])==int  and type(args[2])==str):
-            if not (args[2])==['value', 'len']:
-                       raise ValueError("El tercer argumento no son los str('len', 'values')")
-        
-            if  args[2]=='len':
-                if not len(args[0])==list:
-                   return  False
-                return len(args[0])==(args[1])
-        
-            elif args[2]=='values':
-                if not len(args[0])==list and not len(args[1])==list :
-                    return False
-                return (args[0])==(args[1])
-                  
-            else:
+   if len(args) == 3: 
+        if (type(args[0])==list and type(args[1])==list and type(args[2])==str) or (type(args[0])==list and type(args[1])==int and type(args[2])==str):
+            if args[2]=='value' and type(args[0])==list and type(args[1])==list and args[0]==args[1]:
+                return True
+            elif args[2]=='value' and (type(args[0])!=list or type(args[1])!=list or args[0]!=args[1]):
                 return False
-            
-        else:
-            raise TypeError("son diferentes combinaciones")
+            elif args[2] == 'len' and type(args[0])==list and type(args[1])==int and len(args[0])==args[1]:
+                return True
+            elif args[2]=='len' and (type(args[0])!=list or len(args[0])!=args[1]):
+                return False
+            elif (args[2]!='len' or args[2]!='value'):
+                raise ValueError('El ultimo argumento es diferente de len o value.')
+        elif (type(args[0])==list and (type(args[1])!=int or type(args[2])!=str)) or (type(args[0])==list and (type(args[1])!=list or type(args[2])!=str)):
+            raise TypeError('Los argumentos son diferentes.')     
     else:
         raise TypeError("solo se pueden resivir 1 o 3 argumentos")
+    
     
