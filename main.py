@@ -1,7 +1,7 @@
 import programacion.validacionesdevariables as vali
 
 #print(vali.valint(4,(1,7)))
-#print(vali.valList([2], 2, "len"))
+#print(vali.valList([1,1,2,2,3], (5), "len"))
 #print(vali.valcomplex(3+4j,5))
 print(vali.valfloat(4.2,[4,10]))
 
